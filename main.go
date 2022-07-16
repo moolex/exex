@@ -35,11 +35,11 @@ func main() {
 	exeName := filepath.Base(os.Args[0])
 	if exeReal, err := filepath.EvalSymlinks(filepath.Join(dirName, exeName)); err != nil {
 		log.Fatal(fmt.Errorf("parse symlinks failed: %w", err))
-	} else if exeName == exeReal {
-		log.Println("Usage:")
-		log.Println("ln -s exex docker")
-		log.Println("echo \"-H ssh://test\" > docker.args")
-		log.Println("./docker info")
+	} else if exeName == filepath.Base(exeReal) {
+		fmt.Println("Usage:")
+		fmt.Println("ln -s exex docker")
+		fmt.Println("echo \"-H ssh://test\" > docker.args")
+		fmt.Println("./docker info")
 		os.Exit(1)
 	}
 

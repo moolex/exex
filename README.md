@@ -1,14 +1,19 @@
 # exex
 
-Similar to use sh to run program with extend args
+Similar to use sh to run program with extend args but more powerful
 
-before:
+1. forward signals to child process
+2. try close child process when stdin pipe closed
+
+## Usage
+
+Before:
 ```sh
 #!/bin/sh
 podman -c local $@
 ```
 
-after:
+After:
 ```sh
 ln -s exex docker
 echo "podman" > docker.alias
